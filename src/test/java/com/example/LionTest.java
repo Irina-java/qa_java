@@ -9,16 +9,20 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
-import java.util.List;
+
 
 public class LionTest {
 
 
-    @Test(expected = Exception.class)
-    public void constructorWithInvalidSexThrowsException() throws Exception {
+    @Test
+    public void constructorWithInvalidSexThrowsException() {
         Feline feline = new Feline();
+        try {
         new Lion("Неправильный пол", feline);
-    }
+    } catch (Exception e) {
+            assertEquals("Используйте допустимые значения пола животного - самец или самка", e.getMessage());
+        }
+        }
 
     @Test
     public void getKittensReturnOne() throws Exception {
